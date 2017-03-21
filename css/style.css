@@ -1,0 +1,110 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.bg{
+    background-image: url('../img/bgpng.png');
+    background-position: center;
+    width: 100vw;
+    height: 93vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.star1, .star2, .star3, .star4, .star5, .light, .maja, .foreground{
+    position: absolute;
+}
+.star1, .star2, .star3, .star4, .star5{
+    z-index: 2;
+    bottom: 5vh;
+}
+.light{
+    z-index: 1;
+    left: 45%;
+    transform: translateX(-50%);
+    height: 93vh;
+}
+.maja{
+    z-index: 3;
+    height: 65vh;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.move{
+    animation: moveanimation 1s cubic-bezier(.17,.67,.66,.01) infinite;
+}
+@keyframes moveanimation{
+    to{
+        transform: translateY(-5vh);
+    }
+}
+
+.herojump{
+    animation: jump 1.5s ease-in forwards;
+}
+@keyframes jump{
+    0%, 100%{
+        bottom: 13vh;
+    }
+    50%{
+        bottom: 200px;
+    }
+}
+.herorotate{
+    animation: herorotate 3s ease-in forwards;
+}
+@keyframes herorotate{
+    0%, 100%{
+        transform: translate(-20vw) rotate(0deg);
+    }
+    50%{
+        transform: translate(60vw) rotate(1000deg);
+    }
+}
+.top-margin-15vh{
+    margin-top: 15vh;
+}
+.star1{
+    height: 50vh;
+    width: auto;
+    left: 15vw;
+}
+.star2{
+    height: 50vh;
+    width: auto;
+    left: 45vw;
+}
+.star3{
+    height: 45vh;
+    width: auto;
+    left: 43vw;
+    bottom: 10vh;
+}
+.star4{
+    height: 30vh;
+    width: auto;
+    left: 30vw;
+    bottom: 34vh;
+}
+.star5{
+    height: 27vh;
+    width: auto;
+    left: 29vw;
+}
+.foreground{
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    bottom: 0;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 7vh;
+    align-items: center;
+}
+button{
+    height: 5vh;
+}
