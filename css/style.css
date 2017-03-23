@@ -2,6 +2,13 @@ body{
     margin: 0;
     padding: 0;
 }
+@font-face {
+    font-family: 'akrobatlight';
+    src: url('../fonts/akrobat-light-webfont.woff2') format('woff2'),
+         url('../fonts/akrobat-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 .bg{
     background-image: url('../img/bgpng.png');
     background-position: center;
@@ -14,9 +21,12 @@ body{
 .star1, .star2, .star3, .star4, .star5, .light, .maja, .foreground{
     position: absolute;
 }
-.star1, .star2, .star3, .star4, .star5{
+.star1, .star2, .star3, .star4{
     z-index: 2;
     bottom: 5vh;
+}
+.star5{
+    z-index: 4;
 }
 .light{
     z-index: 1;
@@ -31,17 +41,30 @@ body{
     left: 50%;
     transform: translateX(-50%);
 }
-.move{
-    animation: moveanimation 1s cubic-bezier(.17,.67,.66,.01) infinite;
+
+.moveanimation{
+    animation: move 2s ease-in-out forwards;
 }
-@keyframes moveanimation{
-    to{
-        transform: translateY(-5vh);
+@keyframes move{
+    50%{
+        transform: translate(-100vw);
+    }
+    100%{
+        transform: translate(100vw);
     }
 }
 
-.herojump{
-    animation: jump 1.5s ease-in forwards;
+.moveto30animation{
+    animation: moveto30 2s forwards;
+}
+@keyframes moveto30{
+    100%{
+        transform: translate3D(80vh, -80vh, 0);
+    }
+}
+
+.onejumpanimation{
+    animation: jump 1.5s forwards;
 }
 @keyframes jump{
     0%, 100%{
@@ -51,6 +74,124 @@ body{
         bottom: 200px;
     }
 }
+
+.jumpinganimation{
+    animation: jumping 1.5s 3;
+}
+@keyframes jumping{
+    0%, 100%{
+        bottom: 100px;
+    }
+    25%{
+        bottom: 200px;
+        transform: translate(-100px);
+    }
+    50%{
+        bottom: 100px;
+        transform: translate(100px);
+    }
+    75%{
+        bottom: 200px;
+        transform: translate(-100px);
+    }
+}
+
+.fadinganimation{
+    animation: fading 1.5s forwards;
+}
+@keyframes fading{
+    0%, 100%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+}
+
+.glow{
+    opacity: 0;
+    position: absolute;
+    z-index: 2;
+    height: 65vh;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.glowinganimation{
+    animation: glowing 1.5s forwards;
+}
+@keyframes glowing{
+    0%, 100%{
+       opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+}
+
+.falldownanimation{
+    animation: falldown 1.5s forwards;
+}
+@keyframes falldown{
+    0%{
+       transform-origin: 0 0;
+    }
+    100%{
+        transform-origin: center center;
+        transform: translateX(-50%) translateY(80vh) rotate(-90deg);
+    }
+}
+
+.shakeanimation{
+    animation: shake 0.3s 10;
+}
+@keyframes shake{
+    0%{
+       transform: translateX(-50%) rotate(3deg);
+    }
+    50%{
+       transform: translateX(-50%) rotate(-5deg);
+    }
+    100%{
+        transform: translateX(-50%) rotate(5deg);
+    }
+
+}
+
+.moveto0{
+    animation: moveto0 3s forwards;
+}
+@keyframes moveto0{
+    100%{
+        left: 0;
+    }
+}
+
+.speak{
+    animation: speak 3.5s forwards;
+}
+@keyframes speak{
+    0%{
+        transform: translate(-50%);
+    }
+    10%{
+        transform: translate(-30%);
+    }
+    25%{
+        transform: translateX(-30%) rotate(3deg);
+    }
+    50%{
+       transform: translateX(-30%) rotate(-5deg);
+    }
+    75%{
+        transform: translateX(-30%) rotate(5deg);
+    }
+    100%{
+        transform: translateX(-50%) rotate(0deg);
+    }
+}
+
 .herorotate{
     animation: herorotate 3s ease-in forwards;
 }
@@ -65,32 +206,61 @@ body{
 .top-margin-15vh{
     margin-top: 15vh;
 }
+
+.flow{
+    animation: flow 3s infinite;
+}
+@keyframes flow{
+    0%{
+        bottom: 10vh;
+    }
+    50%{
+        bottom: 11vh;
+    }
+    100%{
+        bottom: 10vh;
+    }
+}
+.flow2{
+    animation: flow2 3s infinite;
+}
+@keyframes flow2{
+    0%{
+        bottom: 11vh;
+    }
+    50%{
+        bottom: 10vh;
+    }
+    100%{
+        bottom: 11vh;
+    }
+}
 .star1{
-    height: 50vh;
+    height: 55vh;
     width: auto;
     left: 15vw;
 }
 .star2{
     height: 50vh;
     width: auto;
-    left: 45vw;
+    left: 49vw;
 }
 .star3{
-    height: 45vh;
+    height: 40vh;
     width: auto;
-    left: 43vw;
+    left: 44vw;
     bottom: 10vh;
 }
 .star4{
-    height: 30vh;
+    height: 43vh;
     width: auto;
-    left: 30vw;
+    left: 23vw;
     bottom: 34vh;
 }
 .star5{
-    height: 27vh;
+    height: 30vh;
     width: auto;
-    left: 29vw;
+    left: 31vw;
 }
 .foreground{
     z-index: 5;
@@ -101,10 +271,25 @@ body{
 .buttons{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 7vh;
     align-items: center;
+    background-color: #0c141c;
 }
 button{
     height: 5vh;
+    background-color: #030e4e;
+    color: white;
+    border-width: 0;
+    border-style: none;
+    border-color: transparent;
+    border-image: none;
+    text-transform: uppercase;
+    padding: 0 20px;
+    font-family: 'akrobatlight';
+    font-size: 20px;
+}
+button:hover{
+    cursor: pointer;
+    background-color: #121e66;
 }
