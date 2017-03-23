@@ -10,6 +10,47 @@ let fallDownBtn = document.querySelector("#falldownbtn");
 let shakeBtn = document.querySelector("#shakebtn");
 let moveto0Btn = document.querySelector("#moveto0btn");
 let speakBtn = document.querySelector("#speak");
+let musicBtnScale = document.querySelector("#playmusicscale");
+let musicBtnFade = document.querySelector("#playmusicfade");
+let heroicMusicSound = document.querySelector("#heroicmusic");
+
+//Play music and scale button
+musicBtnScale.addEventListener('click', play);
+
+function play(){
+    heroicMusicSound.addEventListener('ended', playAgain);
+    heroicMusicSound.play();
+};
+function playAgain(){
+    console.log('One loop of music has ended');
+    heroicMusicSound.pause();
+    myHero.classList.add("scaleanimation");
+};
+
+myHero.addEventListener("animationend", removeClassScale);
+
+function removeClassScale(){
+    myHero.classList.remove("scaleanimation");
+};
+
+//Play music and fade button
+musicBtnFade.addEventListener('click', playFade);
+
+function playFade(){
+    heroicMusicSound.addEventListener('ended', playAgainFade);
+    heroicMusicSound.play();
+};
+function playAgainFade(){
+    console.log('One loop of music has ended');
+    heroicMusicSound.pause();
+    myHero.classList.add("fadeanimation");
+};
+
+myHero.addEventListener("animationend", removeClassMusicFade);
+
+function removeClassMusicFade(){
+    myHero.classList.remove("fadeanimation");
+};
 
 //Move button
 moveBtn.addEventListener("click", startMove);

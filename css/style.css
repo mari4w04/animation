@@ -75,6 +75,30 @@ body{
     }
 }
 
+.scaleanimation{
+    animation: scaling 1s 1;
+}
+@keyframes scaling{
+    0%, 100%{
+        height: 65vh;
+    }
+    50%{
+        height: 80vh;
+    }
+}
+
+.fadeanimation{
+    animation: fadingaudio 1s 1;
+}
+@keyframes fadingaudio{
+    0%, 100%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+}
+
 .jumpinganimation{
     animation: jumping 1.5s 3;
 }
